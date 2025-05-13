@@ -2,14 +2,12 @@
   "name": "my-lang-emu",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "src/main/test.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production ELECTRON_START_URL=http://localhost:3000 electron .",
-    "build": "tsc && vite build",
-    "dev:vite": "vite",
-    "dev:electron": "wait-on tcp:3000 && cross-env NODE_ENV=development ELECTRON_START_URL=http://localhost:3000 electron .",
-    "dev": "concurrently -k \"npm run dev:vite\" \"npm run dev:electron\"",
-    "preview": "vite preview"
+    "start": "electron .",
+    "build": "tsc -p src/main/tsconfig.json",
+    "dev": "tsc -p src/main/tsconfig.json && electron .",
+    "watch": "tsc -p src/main/tsconfig.json --watch"
   },
   "dependencies": {
     "@thenick775/mgba-wasm": "^1.1.1",
@@ -26,6 +24,7 @@
     "cross-env": "^7.0.3",
     "electron": "^36.2.0",
     "electron-reload": "^2.0.0-alpha.1",
+    "nodemon": "^3.1.10",
     "typescript": "^5.0.4",
     "vite": "^4.3.9",
     "wait-on": "^8.0.3"
